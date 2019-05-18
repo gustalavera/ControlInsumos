@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlInsumos", "ControlInsumos\ControlInsumos.csproj", "{51534485-81AE-49CE-A2FF-581B00679D95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaClases", "BibliotecaClases\BibliotecaClases.csproj", "{6854C741-2698-42DE-8F09-D51A1F7A6635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfazControlInsumos", "InterfazControlInsumos\InterfazControlInsumos.csproj", "{D73641F6-2AD6-4962-80E6-3AB122BDA4DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51534485-81AE-49CE-A2FF-581B00679D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51534485-81AE-49CE-A2FF-581B00679D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51534485-81AE-49CE-A2FF-581B00679D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51534485-81AE-49CE-A2FF-581B00679D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6854C741-2698-42DE-8F09-D51A1F7A6635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6854C741-2698-42DE-8F09-D51A1F7A6635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6854C741-2698-42DE-8F09-D51A1F7A6635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6854C741-2698-42DE-8F09-D51A1F7A6635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73641F6-2AD6-4962-80E6-3AB122BDA4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73641F6-2AD6-4962-80E6-3AB122BDA4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73641F6-2AD6-4962-80E6-3AB122BDA4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73641F6-2AD6-4962-80E6-3AB122BDA4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
