@@ -110,9 +110,9 @@ namespace BibliotecaClases
                 SqlCommand cmd = new SqlCommand(textoCmd, con);
 
                 SqlParameter i1 = new SqlParameter("@Descripcion", i.Descripcion);
-                SqlParameter i2 = new SqlParameter("@Marca", i.Marca);
-                SqlParameter i3 = new SqlParameter("@Tipo", i.Tipo);
-                SqlParameter i4 = new SqlParameter("@Proveedor", i.Proveedor);
+                SqlParameter i2 = new SqlParameter("@Marca", i.Marca.Id);
+                SqlParameter i3 = new SqlParameter("@Tipo", i.Tipo.Id);
+                SqlParameter i4 = new SqlParameter("@Proveedor", i.Proveedor.Id);
                 SqlParameter i5 = new SqlParameter("@Cantidad_Disponible", i.Cantidad_Disponible);
                 SqlParameter i6 = new SqlParameter("@Cantidad_Minima", i.Cantidad_Minima);
                 SqlParameter i7 = new SqlParameter("@Id", i.Id);
