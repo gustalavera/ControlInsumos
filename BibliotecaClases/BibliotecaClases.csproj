@@ -50,6 +50,7 @@
     <Compile Include="Funcionario_Tecnico.cs" />
     <Compile Include="Insumo.cs" />
     <Compile Include="Marca.cs" />
+    <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Retiro.cs" />
