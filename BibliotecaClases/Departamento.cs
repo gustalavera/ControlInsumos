@@ -9,7 +9,7 @@ namespace BibliotecaClases
     public class Departamento
     {
         
-            public string Cod_Departamento { get; set; }
+            public int Id_Departamento { get; set; }
             public string Descripcion { get; set; }
 
             

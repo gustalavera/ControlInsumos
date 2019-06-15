@@ -35,7 +35,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -61,6 +61,8 @@
             this.lstTipo.Name = "lstTipo";
             this.lstTipo.Size = new System.Drawing.Size(288, 116);
             this.lstTipo.TabIndex = 41;
+            this.lstTipo.Click += new System.EventHandler(this.lstTipo_Click);
+            this.lstTipo.SelectedIndexChanged += new System.EventHandler(this.lstTipo_SelectedIndexChanged);
             // 
             // btnSalir
             // 
@@ -102,13 +104,13 @@
             this.txtDescripcion.Size = new System.Drawing.Size(201, 20);
             this.txtDescripcion.TabIndex = 40;
             // 
-            // txtCodigo
+            // txtId
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(133, 64);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 39;
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(133, 64);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 39;
             // 
             // lblDescripcion
             // 
@@ -158,7 +160,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmTipo";
@@ -177,7 +179,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Button btnEliminar;

@@ -10,8 +10,8 @@ namespace BibliotecaClases
     {
         public Compra Compra { get; set; }
         public Insumo Insumo { get; set; }
-        public string Cantidad { get; set; }
-        public string Subtotal { get; set; }
+        public int Cantidad { get; set; }
+        public int Subtotal { get; set; }
 
     }
 }

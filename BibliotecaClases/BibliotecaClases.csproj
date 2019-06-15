@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,12 +46,14 @@
     <Compile Include="DetalleCompra.cs" />
     <Compile Include="DetalleRetiro.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="Funcionario_Receptor.cs" />
+    <Compile Include="Funcionario_Tecnico.cs" />
     <Compile Include="Insumo.cs" />
     <Compile Include="Marca.cs" />
-    <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Retiro.cs" />
+    <Compile Include="SqlServer.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

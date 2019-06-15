@@ -36,7 +36,7 @@
             this.lblContacto = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblDias = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtRuc = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
@@ -51,6 +51,8 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.lstSeleccion = new System.Windows.Forms.ListBox();
             this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -138,13 +140,13 @@
             this.lblDias.Text = "Días Visita";
             this.lblDias.Click += new System.EventHandler(this.label7_Click);
             // 
-            // txtCodigo
+            // txtId
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(130, 60);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(129, 20);
-            this.txtCodigo.TabIndex = 7;
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(130, 60);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(129, 20);
+            this.txtId.TabIndex = 7;
             // 
             // txtRazonSocial
             // 
@@ -207,11 +209,13 @@
             this.lstProveedores.Name = "lstProveedores";
             this.lstProveedores.Size = new System.Drawing.Size(211, 172);
             this.lstProveedores.TabIndex = 14;
+            this.lstProveedores.Click += new System.EventHandler(this.lstProveedores_Click);
+            this.lstProveedores.SelectedIndexChanged += new System.EventHandler(this.lstProveedores_SelectedIndexChanged);
             // 
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Warung Kopi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(256, 370);
+            this.btnModificar.Location = new System.Drawing.Point(256, 383);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 16;
@@ -222,7 +226,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Warung Kopi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(358, 370);
+            this.btnEliminar.Location = new System.Drawing.Point(358, 383);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 17;
@@ -233,7 +237,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Warung Kopi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(463, 370);
+            this.btnSalir.Location = new System.Drawing.Point(463, 383);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 18;
@@ -244,7 +248,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Warung Kopi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(39, 370);
+            this.btnAgregar.Location = new System.Drawing.Point(39, 383);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 15;
@@ -255,7 +259,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Warung Kopi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(149, 370);
+            this.btnLimpiar.Location = new System.Drawing.Point(149, 383);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 39;
@@ -281,12 +285,34 @@
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(358, 412);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(73, 23);
+            this.btnCancelar.TabIndex = 43;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(465, 412);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(73, 23);
+            this.btnGuardar.TabIndex = 42;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // frmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.lstSeleccion);
             this.Controls.Add(this.btnLimpiar);
@@ -301,7 +327,7 @@
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtRuc);
             this.Controls.Add(this.txtRazonSocial);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblDias);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblContacto);
@@ -327,7 +353,7 @@
         private System.Windows.Forms.Label lblContacto;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblDias;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.TextBox txtRuc;
         private System.Windows.Forms.TextBox txtDireccion;
@@ -342,5 +368,7 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.ListBox lstSeleccion;
         private System.Windows.Forms.Button btnGenerar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

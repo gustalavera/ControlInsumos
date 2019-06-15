@@ -8,10 +8,12 @@ namespace BibliotecaClases
 {
     public class Retiro
     {
-        public string Cod_Retiro { get; set; }
-        public string Fecha { get; set; }
+        public int Id_Retiro { get; set; }
+        public DateTime Fecha { get; set; }
         public Funcionario Retirado_por { get; set; }
         public Usuario Entregado_por { get; set; }
         public Funcionario Beneficiario { get; set; }
+
+        public Departamento Departamento { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace BibliotecaClases
 {
     public class Compra
     {
-        public string Cod_Compra { get; set; }
+        public string Id_Compra { get; set; }
         public DateTime Fecha { get; set; }
         public Proveedor Proveedor { get; set; }
         public string Nro_OrdenPago { get; set; }

@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    public class Funcionario:Persona
+    public class Funcionario
     {
-        public Departamento Departamento { get; set; }
-        public string Telefono_interno { get; set; }
+        public string Nro_documento { get; set; }
+        public string Nombre { get; set; }
+        public string Contacto { get; set; }
+        public string Email { get; set; }
+     
+    
 
         
 

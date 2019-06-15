@@ -13,38 +13,35 @@ namespace InterfazControlInsumos
 {
     public partial class frmInsumos : Form
     {
-        Insumo insumo;
+      
 
         public frmInsumos()
         {
             InitializeComponent();
         }
 
-        private void frmInsumos_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Insumo insumo = ObtenerInsumos();
+            Insumo insumo = ObtenerInsumoFormulario();
 
-            Insumo.AgregarInsumos(insumo);
+            Insumo.AgregarInsumo(insumo);
 
-            ActualizarListaInsumos();
         }
 
+     
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Insumo insumo = (Insumo)lstInsumos.SelectedItem;
-            Insumo.EliminarInsumos(insumo);
+           Insumo.EliminarInsumo(insumo);
             ActualizarListaInsumos();
             LimpiarFormulario();
         }
 
         private void LimpiarFormulario()
         {
-            txtCodigo.Text = "";
+            txtId.Text = "";
             txtDescripcion.Text = "";
 
             cmbMarca.SelectedItem = "";
@@ -58,35 +55,75 @@ namespace InterfazControlInsumos
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+        }
+        private Insumo ObtenerInsumoFormulario()
+        {
+            Insumo insumo = new Insumo();
+           
+            if (!string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                insumo.Id = Convert.ToInt32(txtId.Text);
+            }
+            
+            insumo.Descripcion = txtDescripcion.Text;
+            insumo.Marca = (Marca)cmbMarca.SelectedItem;
+            insumo.Tipo = (Tipo)cmbTipo.SelectedItem;
+            insumo.Proveedor = (Proveedor)cmbProveedor.SelectedItem;
+            insumo.Cantidad_Disponible = Convert.ToInt32(txtCantidadDisponible.Text);
+            insumo.Cantidad_Minima = Convert.ToInt32(txtCantidadMinima.Text);
+            return insumo;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int index = lstInsumos.SelectedIndex;
-            Insumo.listaInsumos[index] = ObtenerInsumos();
+             Insumo i = ObtenerInsumoFormulario();
+            Insumo.ModificarInsumo(index, i);
 
+
+            LimpiarFormulario();
             ActualizarListaInsumos();
-        }
 
-        private Insumo ObtenerInsumos()
-        {
-            Insumo insumo = new Insumo();
-            insumo.Descripcion = txtDescripcion.Text;
-            insumo.Marca = (Marca)cmbMarca.SelectedItem;
-            insumo.Tipo = (Tipo)cmbTipo.SelectedItem;
-            insumo.Proveedor = (Proveedor)cmbMarca.SelectedItem;
-            insumo.Cantidad_Disponible = txtCantidadDisponible.Text;
-             insumo.Cantidad_Minima = txtCantidadMinima.Text;
-            //verificar
-
-
-            return insumo;
+           
         }
         private void ActualizarListaInsumos()
         {
             lstInsumos.DataSource = null;
-            lstInsumos.DataSource = Insumo.ObtenerInsumo();
+            lstInsumos.DataSource = Insumo.ObtenerInsumos();
+        }
+
+        
+
+        private void lstInsumos_Click(object sender, EventArgs e)
+        {
+            Insumo insumo = (Insumo)lstInsumos.SelectedItem;
+
+            if (insumo != null)
+            {
+                txtId.Text = Convert.ToString(insumo.Id);
+
+                txtDescripcion.Text = insumo.Descripcion;
+                cmbMarca.SelectedItem = (Marca)Marca.ObtenerMarca(insumo.Marca.Id);
+                cmbTipo.SelectedItem = (Tipo)Tipo.ObtenerTipo(insumo.Tipo.Id);
+                cmbProveedor.SelectedItem = (Proveedor)Proveedor.ObtenerProveedor(insumo.Proveedor.Id);
+                txtCantidadDisponible.Text = Convert.ToString(insumo.Cantidad_Disponible);
+                txtCantidadMinima.Text = Convert.ToString(insumo.Cantidad_Minima);
+
+            }
+        }
+
+        private void frmInsumos_Load(object sender, EventArgs e)
+        {
+            Insumo pi = new Insumo();
+            ActualizarListaInsumos();
+            cmbMarca.DataSource = Marca.ObtenerMarcas();
+            cmbTipo.DataSource = Tipo.ObtenerTipos();
+            cmbProveedor.DataSource = Proveedor.ObtenerProveedores();
+
+            cmbMarca.SelectedItem = null;
+            cmbTipo.SelectedItem = null;
+            cmbProveedor.SelectedItem = null;
         }
     }
 }

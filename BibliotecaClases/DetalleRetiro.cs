@@ -10,7 +10,9 @@ namespace BibliotecaClases
     {
         public Retiro Retiro { get; set; }
         public Insumo Insumo { get; set; }
-        public string Cantidad { get; set; }
-        
+        public int Cantidad { get; set; }
+
+        public Proveedor proveedor { get; set; }
+
     }
 }

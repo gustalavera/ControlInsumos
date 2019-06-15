@@ -13,6 +13,7 @@ namespace InterfazControlInsumos
 {
     public partial class frmProveedor : Form
     {
+        string modo;
         public frmProveedor()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace InterfazControlInsumos
             chkDias.Items.Add("Sábado");
 
 
+
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -33,43 +35,80 @@ namespace InterfazControlInsumos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Proveedor proveedor = ObtenerProveedor();
+            modo = "I";
+            LimpiarFormulario();
+            DesbloquearFormulario();
 
-            Proveedor.AgregarProveedor(proveedor);
+        }
 
-            ActualizarListaProveedor();
+        private void DesbloquearFormulario()
+        {
+            txtRazonSocial.Enabled = true;
+            txtRuc.Enabled = true;
+            txtDireccion.Enabled = true;
+            txtEmail.Enabled = true;  
+            chkDias.Enabled = true;
+      
+            btnGuardar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnLimpiar.Enabled = true;
 
-          //  Proveedor proveedor = new Proveedor();
-           // proveedor.Cod_Proveedor = txtCodigo.Text;
-           // proveedor.RazonSocial = txtRazonSocial.Text;
-           // proveedor.RUC = txtRuc.Text;
-           // proveedor.Direccion = txtDireccion.Text;
-           // proveedor.Contacto = txtContacto.Text;
-           // proveedor.Email = txtEmail.Text;            
+        }
+        private void BloquearFormulario()
+        {
+            txtRazonSocial.Enabled = true;
+            txtRuc.Enabled = true;
+            txtDireccion.Enabled = true;
+            txtEmail.Enabled = true;
+            chkDias.Enabled = true;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnLimpiar.Enabled = false;
 
-           // Proveedor.AgregarProveedor(proveedor);
-           // lstProveedores.Items.Add(proveedor.ToString());
+        }
+        private void ActualizarListaProveedores()
+        {
+            lstProveedores.DataSource = null;
+            lstProveedores.DataSource = Proveedor.ObtenerProveedores();
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Proveedor proveedor = (Proveedor)lstProveedores.SelectedItem;
-            Proveedor.EliminarProveedor(proveedor);
-            ActualizarListaProveedor();
-            LimpiarFormulario();
+            if (proveedor != null)
+            {
+                Proveedor.EliminarProveedor(proveedor);
+                ActualizarListaProveedores();
+                LimpiarFormulario();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Seleccione un item de la lista");
+            }
 
         }
         private void LimpiarFormulario()
         {
-            txtCodigo.Text = "";
+            txtId.Text = "";
             txtRazonSocial.Text = "";
             txtRazonSocial.Text = "";
             txtRuc.Text = "";
             txtDireccion.Text = "";
             txtContacto.Text = "";
             txtEmail.Text = "";
-            
+            ResetearCheckedListBox();
+
+        }
+        private void ResetearCheckedListBox()
+        {
+            chkDias.SetItemChecked(0, false);
+            chkDias.SetItemChecked(1, false);
+            chkDias.SetItemChecked(2, false);
+            chkDias.SetItemChecked(3, false);
+            chkDias.SetItemChecked(4, false);
+            chkDias.SetItemChecked(5, false);
+        
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -78,7 +117,13 @@ namespace InterfazControlInsumos
 
         private void frmProveedor_Load(object sender, EventArgs e)
         {
-              
+
+            Proveedor p = new Proveedor();
+
+
+            ActualizarListaProveedores();
+            
+            BloquearFormulario();
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -95,36 +140,121 @@ namespace InterfazControlInsumos
         {
 
         }
-        private Proveedor ObtenerProveedor()
-        {
-            Proveedor proveedor = new Proveedor();
-            proveedor.RazonSocial = txtRazonSocial.Text;
-            proveedor.RUC = txtRuc.Text;
-            proveedor.Direccion = txtRazonSocial.Text;
-            proveedor.Contacto = txtRazonSocial.Text;
-            proveedor.Email = txtRazonSocial.Text;
-            
-
-
-
-            return proveedor;
-        }
+       
         private void ActualizarListaProveedor()
         {
             lstProveedores.DataSource = null;
-            lstProveedores.DataSource = Proveedor.ObtenerProveedor();
+            lstProveedores.DataSource = Proveedor.ObtenerProveedores();
         }
+   
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            int index = lstProveedores.SelectedIndex;
-            Proveedor.listaProveedores[index] = ObtenerProveedor();
+            Proveedor proveedor = (Proveedor)lstProveedores.SelectedItem;
 
-            ActualizarListaProveedor();
+            if (proveedor != null)
+            {
+                modo = "E";
+                DesbloquearFormulario();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un item de la lista");
+            }
         }
+
+        private Proveedor ObtenerProveedorFormulario()
+        {
+            Proveedor proveedor = new Proveedor();
+            if (!string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                proveedor.Id = Convert.ToInt32(txtId.Text);
+            }
+
+          
+            proveedor.Razon_Social = txtRazonSocial.Text;
+            proveedor.RUC = txtRuc.Text;
+            proveedor.Direccion = txtDireccion.Text;
+            proveedor.Contacto = txtContacto.Text;
+            proveedor.Email = txtEmail.Text;
+           
+            proveedor.Dias_Visita = chkDias.CheckedItems.Cast<String>().ToList();
+            return proveedor;
+        }
+        private void lstProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedor proveedor = (Proveedor)lstProveedores.SelectedItem;
+
+            if (proveedor != null)
+            {
+                    txtId.Text = Convert.ToString(proveedor.Id);
+              txtRazonSocial.Text = proveedor.Razon_Social;
+                 txtRuc.Text = proveedor.RUC;
+                    txtDireccion.Text = proveedor.Direccion;
+                    txtContacto.Text = proveedor.Contacto;
+                    txtEmail.Text = proveedor.Email;
+
+                    ResetearCheckedListBox();
+                    foreach (string dia in proveedor.Dias_Visita)
+                    {
+                        if (dia == "L") chkDias.SetItemChecked(0, true);
+                        else if (dia == "M") chkDias.SetItemChecked(1, true);
+                        else if (dia == "X") chkDias.SetItemChecked(2, true);
+                        else if (dia == "J") chkDias.SetItemChecked(3, true);
+                        else if (dia == "V") chkDias.SetItemChecked(4, true);
+                        else if (dia == "S") chkDias.SetItemChecked(5, true);
+                        else if (dia == "D") chkDias.SetItemChecked(6, true);
+
+
+                    }
+                    if (true)
+                    {
+
+                    }
+
+                }
+
+            }
+        
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+            BloquearFormulario();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (modo == "I")
+            {
+                Proveedor proveedor = ObtenerProveedorFormulario();
+
+                Proveedor.AgregarProveedor(proveedor);
+
+
+            }
+            else if (modo == "E")
+            {
+                int index = lstProveedores.SelectedIndex;
+
+                Proveedor proveedor = ObtenerProveedorFormulario();
+                Proveedor.EditarProveedor(index, proveedor);
+
+            }
+
+            ActualizarListaProveedores();
+            LimpiarFormulario();
+            BloquearFormulario();
+
+        }
+
+        private void lstProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

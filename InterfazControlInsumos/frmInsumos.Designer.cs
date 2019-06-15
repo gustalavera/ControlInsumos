@@ -34,7 +34,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.lblTipo = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblProveedor = new System.Windows.Forms.Label();
@@ -101,13 +101,13 @@
             this.txtDescripcion.Size = new System.Drawing.Size(183, 20);
             this.txtDescripcion.TabIndex = 27;
             // 
-            // txtCodigo
+            // txtId
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(123, 65);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(129, 20);
-            this.txtCodigo.TabIndex = 26;
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(123, 65);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(129, 20);
+            this.txtId.TabIndex = 26;
             // 
             // lblTipo
             // 
@@ -240,6 +240,7 @@
             this.lstInsumos.Name = "lstInsumos";
             this.lstInsumos.Size = new System.Drawing.Size(499, 116);
             this.lstInsumos.TabIndex = 45;
+            this.lstInsumos.Click += new System.EventHandler(this.lstInsumos_Click);
             // 
             // frmInsumos
             // 
@@ -260,7 +261,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblProveedor);
@@ -281,7 +282,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblProveedor;

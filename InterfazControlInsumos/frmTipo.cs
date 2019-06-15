@@ -24,21 +24,36 @@ namespace InterfazControlInsumos
         }
          private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Tipo tipo = ObtenerTipo();
+            Tipo tipo = new Tipo();
+            tipo.Descripcion = txtDescripcion.Text;
+
+
 
             Tipo.AgregarTipo(tipo);
-
+            LimpiarFormulario();
             ActualizarListaTipo();
-
 
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
             int index = lstTipo.SelectedIndex;
-            Tipo.listaTipo[index] = ObtenerTipo();
+            Tipo m = ObtenerTipoFormulario();
+            Tipo.ModificarTipo(index, m);
 
+
+            LimpiarFormulario();
             ActualizarListaTipo();
+
+           
+           
+        }
+        private Tipo ObtenerTipoFormulario()
+        {
+            Tipo tipo = new Tipo();
+            tipo.Id = Convert.ToInt16(txtId.Text);
+            tipo.Descripcion = txtDescripcion.Text;
+
+            return tipo;
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -56,7 +71,7 @@ namespace InterfazControlInsumos
         private void ActualizarListaTipo()
         {
             lstTipo.DataSource = null;
-            lstTipo.DataSource = Tipo.ObtenerTipo();
+            lstTipo.DataSource = Tipo.ObtenerTipos();
         }
         private Tipo ObtenerTipo()
         {
@@ -81,11 +96,15 @@ namespace InterfazControlInsumos
 
             if (tipo != null)
             {
+                txtId.Text = Convert.ToString(tipo.Id);
                 txtDescripcion.Text = tipo.Descripcion;
             }
 
         }
 
-       
+        private void lstTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

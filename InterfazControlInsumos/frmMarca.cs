@@ -20,19 +20,14 @@ namespace InterfazControlInsumos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Marca marca = ObtenerMarcas();
+            Marca marca = new Marca();
+            marca.Descripcion = txtDescripcion.Text;
+
+
 
             Marca.AgregarMarca(marca);
-
+            LimpiarFormulario();
             ActualizarListaMarcas();
-
-      //       Marca marca = new Marca();
-            // marca.Cod_Marca = txtCodigo.Text;
-            // marca.Descripcion = txtDescripcion.Text;
-
-
-
-            // lstMarca.Items.Add(marca.ToString());
         }
         private void LimpiarFormulario()
         {
@@ -48,23 +43,26 @@ namespace InterfazControlInsumos
         {
 
             int index = lstMarca.SelectedIndex;
-            Marca.listaMarca[index] = ObtenerMarcas();
+            Marca m = ObtenerMarcaFormulario();
+            Marca.ModificarMarca(index, m);
 
+
+            LimpiarFormulario();
             ActualizarListaMarcas();
         }
-        //Selecciona la marca u obtiene
-        private Marca ObtenerMarcas()
+        private Marca ObtenerMarcaFormulario()
         {
             Marca marca = new Marca();
+            marca.Id = Convert.ToInt32(txtId.Text);
             marca.Descripcion = txtDescripcion.Text;
-
+          
             return marca;
         }
-        //Actualiza con el nuevo valor de la marca
+
         private void ActualizarListaMarcas()
         {
             lstMarca.DataSource = null;
-            lstMarca.DataSource = Marca.ObtenerMarca();
+            lstMarca.DataSource = Marca.ObtenerMarcas();
         }
 
         private void frmMarca_Load(object sender, EventArgs e)
@@ -82,16 +80,25 @@ namespace InterfazControlInsumos
 
             if (marca != null)
             {
+                txtId.Text = Convert.ToString(marca.Id);
+            
                 txtDescripcion.Text = marca.Descripcion;
             }
 
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Marca marca = (Marca)lstMarca.SelectedItem;
-            Marca.EliminarMarca(marca);
-            ActualizarListaMarcas();
-            LimpiarFormulario();
+            if (this.lstMarca.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Favor seleccione una fila");
+            }
+            else
+            {
+                Marca m = (Marca)lstMarca.SelectedItem;
+                Marca.EliminarMarca(m);
+                ActualizarListaMarcas();
+                LimpiarFormulario();
+            }
 
         }
 
@@ -99,7 +106,7 @@ namespace InterfazControlInsumos
         {
             this.Close();
         }
-
+        
         private void lstMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
 
