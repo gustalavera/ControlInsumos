@@ -27,6 +27,9 @@ namespace InterfazControlInsumos
             Insumo insumo = ObtenerInsumoFormulario();
 
             Insumo.AgregarInsumo(insumo);
+            MessageBox.Show("Agregado con exito");
+            ActualizarListaInsumos();
+
 
         }
 
