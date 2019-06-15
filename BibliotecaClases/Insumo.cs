@@ -53,9 +53,9 @@ namespace BibliotecaClases
         {
            
             SqlParameter i1 = new SqlParameter("@Descripcion", this.Descripcion);
-            SqlParameter i2 = new SqlParameter("@Marca", this.Marca.Id);
-            SqlParameter i3 = new SqlParameter("@Tipo", this.Tipo.Id);
-            SqlParameter i4 = new SqlParameter("@Proveedor", this.Proveedor.Id);
+            SqlParameter i2 = new SqlParameter("@Marca", this.Marca);
+            SqlParameter i3 = new SqlParameter("@Tipo", this.Tipo);
+            SqlParameter i4 = new SqlParameter("@Proveedor", this.Proveedor);
             SqlParameter i5 = new SqlParameter("@Cantidad_Disponible", this.Cantidad_Disponible);
             SqlParameter i6 = new SqlParameter("@Cantidad_Minima", this.Cantidad_Minima);
             i1.SqlDbType = SqlDbType.VarChar;
@@ -110,9 +110,9 @@ namespace BibliotecaClases
                 SqlCommand cmd = new SqlCommand(textoCmd, con);
 
                 SqlParameter i1 = new SqlParameter("@Descripcion", i.Descripcion);
-                SqlParameter i2 = new SqlParameter("@Marca", i.Marca.Id);
-                SqlParameter i3 = new SqlParameter("@Tipo", i.Tipo.Id);
-                SqlParameter i4 = new SqlParameter("@Proveedor", i.Proveedor.Id);
+                SqlParameter i2 = new SqlParameter("@Marca", i.Marca);
+                SqlParameter i3 = new SqlParameter("@Tipo", i.Tipo);
+                SqlParameter i4 = new SqlParameter("@Proveedor", i.Proveedor);
                 SqlParameter i5 = new SqlParameter("@Cantidad_Disponible", i.Cantidad_Disponible);
                 SqlParameter i6 = new SqlParameter("@Cantidad_Minima", i.Cantidad_Minima);
                 SqlParameter i7 = new SqlParameter("@Id", i.Id);
